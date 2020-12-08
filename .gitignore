@@ -1,2 +1,5 @@
-dataset/
+env/
+.env/
+venv/
+.venv/
 
