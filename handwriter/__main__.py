@@ -1,4 +1,6 @@
+import os
 import argparse
+import pdfkit
 from .writer import write_html
 
 parser = argparse.ArgumentParser(description="Convert text to a handwritten page")
@@ -11,8 +13,8 @@ parser.add_argument(
 parser.add_argument(
     "--outfile",
     "-o",
-    default="page.html",
-    help="path to output html file (defaults to ./page.html)",
+    default="page.pdf",
+    help="path to output pdf file (defaults to ./page.pdf)",
 )
 parser.add_argument(
     "--setname", "-s", default="set0", help="Name of character set to use",
@@ -21,4 +23,10 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-write_html(args.infile, args.outfile, args.setname)
+fpath_no_ext, _ = os.path.splitext(args.outfile)
+htmlfpath = fpath_no_ext + ".html"
+
+write_html(args.infile, htmlfpath, args.setname)
+pdfkit.from_file(htmlfpath, args.outfile)
+
+os.remove(htmlfpath)
