@@ -37,7 +37,7 @@ html_page = [
 
 
 def write_html(input_filepath, output_filepath, set_name):
-    chars_dir = pathlib.Path(__file__).parent.parent.absolute() / "chars"
+    chars_dir = pathlib.Path(__file__).parent.absolute() / "chars"
     set_dir = chars_dir / set_name
 
     uppercase = string.ascii_uppercase
