@@ -27,12 +27,18 @@ CHAR_MAP = {
     "}": "right_flower_bracket",
     "[": "left_big_bracket",
     "]": "right_big_bracket",
+    "_": "underscore",
+    "|": "pipe",
+    "^": "caret",
+    ">": "greater_than",
+    "<": "less_than",
+    "\\": "back_slash",
 }
 
 
 def make_set_dir(base_img_dir, set_name, custom_chars=[]):
     """
-    Make the directory structure for a character set in 
+    Make the directory structure for a character set in
     <base_img_dir>/<set_name>
 
     Args:
@@ -40,7 +46,7 @@ def make_set_dir(base_img_dir, set_name, custom_chars=[]):
         set_name: (directory) name of the character set to generate
         custom_chars: any list of custom characters that needs to be included
             Eg: ["euro", "greater_than", "back_slash"]
-    
+
     Returns: None
     """
     base_img_dir = pathlib.Path(base_img_dir)
