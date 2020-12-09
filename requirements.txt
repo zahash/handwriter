@@ -1,1 +1,4 @@
 pdfkit==0.*
+Pillow==8.*
+numpy==1.*
+pygame==1.*
