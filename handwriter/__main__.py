@@ -1,4 +1,5 @@
 import os
+import pathlib
 import argparse
 import pdfkit
 from .writer import write_html
@@ -17,7 +18,12 @@ parser.add_argument(
     help="path to output pdf file (defaults to ./page.pdf)",
 )
 parser.add_argument(
-    "--setname", "-s", default="set0", help="Name of character set to use",
+    "--setname",
+    "-s",
+    default="set0",
+    help="Name of character set to use. Available sets: {}".format(
+        os.listdir(pathlib.Path(__file__).parent.absolute() / "chars")
+    ),
 )
 
 
