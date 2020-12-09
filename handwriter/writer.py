@@ -20,7 +20,6 @@ html_page = [
                     width:90%;}
 
                 img,span{height:25px;
-                        width:10px;
                         float:left;
                         margin-top:5px;
                         margin-bottom:10px;}
