@@ -116,8 +116,13 @@ def auto_crop(set_dir):
             original_img = Image.open(fpath)
             original_img_data = np.asarray(original_img)
 
-            img = Image.open(fpath).convert("L")
-            img_data = np.asarray(img)
+            img_data = np.zeros(
+                shape=[original_img_data.shape[0], original_img_data.shape[1]]
+            )
+
+            for r, row in enumerate(original_img_data):
+                for c, rgba in enumerate(row):
+                    img_data[r][c] = sum(rgba)
 
             row_zeros = ~img_data.any(axis=1)
             col_zeros = ~img_data.any(axis=0)
@@ -143,7 +148,7 @@ def auto_crop(set_dir):
             col_range[0] = max(0, col_start - 1)
 
             col_start = len(col_zeros) - 1
-            while col_start < len(col_zeros) and col_zeros[col_start]:
+            while col_start > 0 and col_zeros[col_start]:
                 col_start -= 1
 
             col_range[1] = min(col_start + 1, len(col_zeros) - 1)
